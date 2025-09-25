@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="facade-container">
+        <div class="gallery-entrance">
+            <div class="entrance-frame">
+                <div class="entrance-door" id="entranceDoor">
+                    <div class="door-handle" id="doorHandle"></div>
+                    <div class="door-text">Entre</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal de Login -->
+        <div class="login-modal-overlay" id="loginModal">
+            <div class="login-modal">
+                <div class="modal-header">
+                    <h2>Acesso Privado</h2>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                </div>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="text" id="username" name="username" placeholder="Usuário" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" placeholder="Senha" required>
+                    </div>
+                    <button type="submit" class="login-btn">Entrar</button>
+                    <p id="loginMessage" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Áudio de fundo para toda a experiência -->
+        <audio id="facadeBackgroundAudio" preload="auto" loop>
+            <!-- Placeholder para áudio romântico - será substituído pelo usuário -->
+            <!-- <source src="audio/romantic_music.mp3" type="audio/mpeg"> -->
+        </audio>
+    </div>
+
+    <div class="romantic-page-container hidden">
+        <!-- Conteúdo da Página Romântica será carregado aqui -->
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
+

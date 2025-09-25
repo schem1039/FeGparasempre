@@ -1,0 +1,768 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background: 
+        linear-gradient(rgba(251, 247, 243, 0.85), rgba(251, 247, 243, 0.85)),
+        url('../images/romantic_background.jpg') center/cover no-repeat,
+        linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Página Fachada */
+.facade-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    position: relative;
+}
+
+.gallery-entrance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.entrance-frame {
+    width: 300px;
+    height: 400px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border-radius: 20px;
+    box-shadow: 
+        20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.entrance-frame:hover {
+    transform: translateY(-5px);
+}
+
+.entrance-door {
+    width: 200px;
+    height: 280px;
+    background: 
+        linear-gradient(rgba(248, 244, 240, 0.9), rgba(248, 244, 240, 0.9)),
+        url('../images/romantic_hearts.jpg') center/cover no-repeat,
+        linear-gradient(145deg, #f0f0f0, #cacaca);
+    border-radius: 15px;
+    box-shadow: 
+        inset 5px 5px 10px #bebebe,
+        inset -5px -5px 10px #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.entrance-door:hover {
+    background: 
+        linear-gradient(rgba(232, 232, 232, 0.9), rgba(194, 194, 194, 0.9)),
+        url('../images/romantic_hearts.jpg') center/cover no-repeat,
+        linear-gradient(145deg, #e8e8e8, #c2c2c2);
+    transform: scale(1.02);
+}
+
+.door-handle {
+    width: 12px;
+    height: 12px;
+    background: #8b7355;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.door-text {
+    color: #666;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Modal de Login */
+.login-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.login-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.login-modal {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(50px);
+    transition: transform 0.3s ease;
+}
+
+.login-modal-overlay.active .login-modal {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.modal-header h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background: #fafafa;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #8b7355;
+    background: white;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #8b7355, #a68b5b);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #7a6249, #9d7f52);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.error-message.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Animação de vibração para erro */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Página Romântica */
+.romantic-page-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    background-color: #FBF7F3;
+    overflow-y: auto;
+}
+
+.romantic-page-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.facade-container.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .entrance-frame {
+        width: 250px;
+        height: 320px;
+    }
+    
+    .entrance-door {
+        width: 170px;
+        height: 240px;
+    }
+    
+    .login-modal {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .door-text {
+        font-size: 16px;
+    }
+}
+
+
+/* Estilos da Página Romântica */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500&display=swap');
+
+.romantic-content {
+    min-height: 100vh;
+    padding: 40px 20px;
+    position: relative;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(139, 115, 85, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(139, 115, 85, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #FBF7F3 0%, #F8F4F0 100%);
+}
+
+/* Elementos florais decorativos */
+.floral-decoration {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    z-index: 1;
+    animation: floralFloat 6s ease-in-out infinite;
+}
+
+.floral-decoration.top-left {
+    top: 20px;
+    left: 20px;
+    background-image: url('images/botanical_corner.jpg');
+    animation-delay: 0s;
+}
+
+.floral-decoration.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    background-image: url('images/floral_gold.jpg');
+    transform: rotate(180deg);
+    animation-delay: 3s;
+}
+
+@keyframes floralFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+/* Cabeçalho do casal */
+.couple-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.couple-names {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 500;
+    color: #8b7355;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(139, 115, 85, 0.1);
+    letter-spacing: 2px;
+}
+
+.couple-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #9ca3af;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Conteúdo principal */
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.content-block {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 
+        0 10px 30px rgba(139, 115, 85, 0.1),
+        0 1px 8px rgba(139, 115, 85, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #8b7355, #a68b5b, #8b7355);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.content-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 20px 40px rgba(139, 115, 85, 0.15),
+        0 5px 15px rgba(139, 115, 85, 0.1);
+}
+
+.content-block:hover::before {
+    opacity: 1;
+}
+
+.block-content {
+    text-align: center;
+}
+
+.block-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #8b7355;
+    margin: 20px 0 15px 0;
+    font-weight: 500;
+}
+
+.block-content p {
+    font-family: 'Inter', sans-serif;
+    color: #6b7280;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Imagens dos blocos */
+.qr-image, .invite-thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(139, 115, 85, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.qr-image:hover, .invite-thumbnail:hover {
+    transform: scale(1.05);
+}
+
+/* Placeholder do vídeo */
+.video-placeholder {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 5px 15px rgba(139, 115, 85, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.video-placeholder:hover {
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+    transform: scale(1.05);
+}
+
+.video-icon {
+    font-size: 2rem;
+    color: #8b7355;
+    margin-bottom: 10px;
+}
+
+.video-placeholder p {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    margin: 0;
+}
+
+/* Botões elegantes */
+.elegant-btn {
+    background: linear-gradient(135deg, #8b7355, #a68b5b);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+}
+
+.elegant-btn:hover {
+    background: linear-gradient(135deg, #7a6249, #9d7f52);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 115, 85, 0.4);
+}
+
+.elegant-btn.secondary {
+    background: transparent;
+    color: #8b7355;
+    border: 2px solid #8b7355;
+    box-shadow: none;
+}
+
+.elegant-btn.secondary:hover {
+    background: #8b7355;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.3);
+}
+
+/* Botão voltar à fachada */
+.back-to-facade {
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.back-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: #8b7355;
+    border: 2px solid rgba(139, 115, 85, 0.3);
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.back-btn:hover {
+    background: rgba(139, 115, 85, 0.1);
+    border-color: #8b7355;
+    transform: translateY(-2px);
+}
+
+/* Responsividade para a página romântica */
+@media (max-width: 768px) {
+    .romantic-content {
+        padding: 20px 15px;
+    }
+    
+    .floral-decoration {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .floral-decoration.top-left {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .floral-decoration.bottom-right {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .couple-names {
+        font-size: 2.5rem;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .content-block {
+        padding: 25px 20px;
+    }
+    
+    .qr-image, .invite-thumbnail, .video-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .couple-names {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+    
+    .couple-subtitle {
+        font-size: 1rem;
+    }
+    
+    .content-block {
+        padding: 20px 15px;
+    }
+    
+    .elegant-btn {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+}
+
+
+/* Controles de áudio */
+.audio-controls {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+}
+
+.audio-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+}
+
+.audio-toggle:hover {
+    background: rgba(139, 115, 85, 0.1);
+    transform: scale(1.1);
+}
+
+.audio-info {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: #8b7355;
+    font-weight: 500;
+}
+
+.audio-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.3);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    border: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.audio-prompt-content p {
+    font-family: 'Inter', sans-serif;
+    color: #8b7355;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Responsividade para controles de áudio */
+@media (max-width: 768px) {
+    .audio-controls {
+        bottom: 20px;
+        left: 20px;
+        padding: 8px 12px;
+    }
+    
+    .audio-info {
+        font-size: 0.7rem;
+    }
+    
+    .audio-toggle {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+    
+    .audio-prompt {
+        margin: 20px;
+        padding: 25px 20px;
+        width: calc(100% - 40px);
+        max-width: 300px;
+    }
+}
+
+
+/* Controles de áudio da fachada */
+.facade-audio-controls {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(139, 115, 85, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 115, 85, 0.1);
+}
+
+.facade-audio-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+}
+
+.facade-audio-toggle:hover {
+    background: rgba(139, 115, 85, 0.1);
+    transform: scale(1.1);
+}
+
+.facade-audio-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(139, 115, 85, 0.3);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    border: 1px solid rgba(139, 115, 85, 0.2);
+}
+
+.facade-audio-prompt-content p {
+    font-family: 'Inter', sans-serif;
+    color: #8b7355;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+/* Responsividade para controles de áudio da fachada */
+@media (max-width: 768px) {
+    .facade-audio-controls {
+        top: 20px;
+        right: 20px;
+        padding: 8px;
+    }
+    
+    .facade-audio-toggle {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+    
+    .facade-audio-prompt {
+        margin: 20px;
+        padding: 25px 20px;
+        width: calc(100% - 40px);
+        max-width: 300px;
+    }
+}
+
